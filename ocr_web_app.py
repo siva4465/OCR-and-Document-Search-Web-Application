@@ -1,4 +1,3 @@
-
 import streamlit as st
 import pytesseract
 from PIL import Image
@@ -9,8 +8,6 @@ import re
 # Set the path to the Tesseract executable
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 pytesseract.pytesseract.tesseract_cmd = "/usr/bin/tesseract"
-
-
 
 # Streamlit app title
 st.title("OCR and Document Search Web Application")
@@ -32,7 +29,9 @@ def highlight_keyword(extracted_text, keyword):
     if keyword:
         # Create a regex pattern for the keyword (case insensitive)
         pattern = re.compile(re.escape(keyword), re.IGNORECASE)
-        highlighted_text = pattern.sub(f'<span style="background-color: white; color: black;">{keyword}</span>', extracted_text)
+
+        # Highlight keyword with a black background and neon-colored text (e.g., bright green)
+        highlighted_text = pattern.sub(f'<span style="background-color: black; color: #39FF14;">{keyword}</span>', extracted_text)
         return highlighted_text
     return extracted_text
 
@@ -57,9 +56,10 @@ if uploaded_image is not None:
 
     if keyword:
         highlighted_text = highlight_keyword(extracted_text, keyword)
-        st.success(f"Keyword '{keyword}' found in the extracted text!")
-        st.markdown(highlighted_text, unsafe_allow_html=True)
-    else:
-        st.error(f"Keyword '{keyword}' not found in the extracted text.")
+        if keyword.lower() in extracted_text.lower():
+            st.success(f"Keyword '{keyword}' found in the extracted text!")
+            st.markdown(highlighted_text, unsafe_allow_html=True)
+        else:
+            st.error(f"Keyword '{keyword}' not found in the extracted text.")
 else:
     st.write("Please upload an image to start the OCR process.")
