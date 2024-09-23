@@ -1,9 +1,9 @@
 streamlit
-pytesseract
 Pillow
 opencv-python-headless
 numpy
-torch
-transformers
+pytesseract
 tesseract-ocr
 tesseract-ocr-hin
+torch
+transformers
