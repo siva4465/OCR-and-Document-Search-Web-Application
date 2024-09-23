@@ -5,3 +5,5 @@ opencv-python-headless
 numpy
 torch
 transformers
+tesseract-ocr
+tesseract-ocr-hin
