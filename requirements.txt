@@ -3,7 +3,5 @@ Pillow
 opencv-python-headless
 numpy
 pytesseract
-tesseract-ocr
-tesseract-ocr-hin
 torch
 transformers
