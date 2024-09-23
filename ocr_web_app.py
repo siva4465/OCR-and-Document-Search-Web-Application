@@ -7,8 +7,10 @@ import numpy as np
 import re
 
 # Set the path to the Tesseract executable
+pytesseract.pytesseract.tesseract_cmd = "/usr/bin/tesseract"
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
-#pytesseract.pytesseract.tesseract_cmd = "/usr/bin/tesseract"
+
+
 
 
 # Streamlit app title
